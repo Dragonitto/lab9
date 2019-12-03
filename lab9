@@ -6,15 +6,17 @@ count=$#
 
 if [ $count -lt 1 ]; then
     echo "ERROR: No numbers given. Please give some numbers as command line arguments."
-	        exit 1
-			        fi
+	exit 1
+fi
 
-					        while [ -n "$1" ]; do
-							            sum=$(expr $sum + $1)
-										                shift # Now $1 points to the next number (arg, actually).
-														                done
 
-																		                avg=$(echo "scale=4; $sum / $count"|bc)
+while [ -n "$1" ]; do
+	sum=$(expr $sum + $1)
+	shift
+done
 
-																						                echo "The average of the $count numbers is: $avg"
+
+avg=$(echo "scale=4; $sum / $count"|bc)
+
+echo "The average of the $count numbers is: $avg"
 
