@@ -4,10 +4,6 @@
 sum=0
 count=$#
 
-if [ $count -lt 1 ]; then
-    echo "ERROR: No numbers given. Please give some numbers as command line arguments."
-	exit 1
-fi
 
 
 while [ -n "$1" ]; do
