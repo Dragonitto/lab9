@@ -1,38 +1,20 @@
 #! /bin/bash
 
-# Total numbers
-n=5
 
-   # copying the value of n
-   m=$n
+sum=0
+count=$#
 
-      # initialized sum by 0
-      sum=0
+if [ $count -lt 1 ]; then
+    echo "ERROR: No numbers given. Please give some numbers as command line arguments."
+	        exit 1
+			        fi
 
-# array initialized with
-# some numbers
-array=(1 2 3 4 5)
+					        while [ -n "$1" ]; do
+							            sum=$(expr $sum + $1)
+										                shift # Now $1 points to the next number (arg, actually).
+														                done
 
-   # loop until n is greater
-   # than 0
-   while [ $n -gt 0 ]
-   do
+																		                avg=$(echo "scale=4; $sum / $count"|bc)
 
+																						                echo "The average of the $count numbers is: $avg"
 
-    # copy element in a
-        # temp variable
-            num=${array[`expr $n - 1`]}
-
-                   # add them to sum
-                       sum=`expr $sum + $num`
-
-                              # decrement count of n
-                                  n=`expr $n - 1`
-                                  done
-
-# displaying the average
-# by piping with bc command
-# bc is bash calculator
-# command
-avg=`echo "$sum / $m" | bc -l`
-printf '%0.3f' "$avg"
